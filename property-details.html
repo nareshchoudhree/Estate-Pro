@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Downtown Apartment | EstatePro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .gallery-thumbnail:hover {
+            border: 2px solid #2563eb;
+        }
+        .amenity-icon {
+            transition: all 0.3s ease;
+        }
+        .amenity-item:hover .amenity-icon {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-2xl font-bold text-blue-600">EstatePro</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-blue-600 transition">Home</a>
+                    <a href="listings.html" class="text-gray-600 hover:text-blue-600 transition">Listings</a>
+                    <a href="about.html" class="text-gray-600 hover:text-blue-600 transition">About</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-blue-600 transition">Contact</a>
+                </div>
+                <button class="md:hidden">
+                    <i data-feather="menu"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Property Header -->
+    <section class="py-8 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-800 mb-1">Modern Downtown Apartment</h1>
+                    <div class="flex items-center text-gray-600">
+                        <i data-feather="map-pin" class="w-4 h-4 mr-1"></i>
+                        <span>123 Main Street, New York, NY 10001</span>
+                    </div>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <span class="text-3xl font-bold text-blue-600">$320,000</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Gallery -->
+    <section class="py-0 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
+                <div class="lg:col-span-3">
+                    <div class="relative h-96 bg-gray-200 rounded-xl overflow-hidden">
+                        <img src="http://static.photos/real-estate/1200x630/10" alt="Property" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">Featured</div>
+                    </div>
+                </div>
+                <div class="lg:col-span-1 grid grid-cols-2 gap-4">
+                    <div class="gallery-thumbnail h-44 bg-gray-200 rounded-xl overflow-hidden cursor-pointer">
+                        <img src="http://static.photos/real-estate/640x360/11" alt="Property" class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-thumbnail h-44 bg-gray-200 rounded-xl overflow-hidden cursor-pointer">
+                        <img src="http://static.photos/real-estate/640x360/12" alt="Property" class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-thumbnail h-44 bg-gray-200 rounded-xl overflow-hidden cursor-pointer">
+                        <img src="http://static.photos/real-estate/640x360/13" alt="Property" class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-thumbnail h-44 bg-gray-200 rounded-xl overflow-hidden cursor-pointer">
+                        <img src="http://static.photos/real-estate/640x360/14" alt="Property" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Details -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Main Content -->
+                <div class="lg:w-2/3">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Property Details</h2>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <i data-feather="home" class="w-6 h-6 text-blue-600 mx-auto mb-2"></i>
+                            <p class="text-gray-600">Type</p>
+                            <p class="font-bold">Apartment</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <i data-feather="maximize-2" class="w-6 h-6 text-blue-600 mx-auto mb-2"></i>
+                            <p class="text-gray-600">Area</p>
+                            <p class="font-bold">1200 sqft</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <i data-feather="layers" class="w-6 h-6 text-blue-600 mx-auto mb-2"></i>
+                            <p class="text-gray-600">Bedrooms</p>
+                            <p class="font-bold">2</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <i data-feather="droplet" class="w-6 h-6 text-blue-600 mx-auto mb-2"></i>
+                            <p class="text-gray-600">Bathrooms</p>
+                            <p class="font-bold">2</p>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Description</h3>
+                    <p class="text-gray-600 mb-6">
+                        This stunning modern apartment in the heart of downtown offers the perfect blend of luxury and convenience. 
+                        The open-concept living area features floor-to-ceiling windows that flood the space with natural light and 
+                        provide breathtaking city views. The gourmet kitchen is equipped with high-end stainless steel appliances, 
+                        quartz countertops, and custom cabinetry.
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        The master suite includes a spacious walk-in closet and a spa-like bathroom with dual vanities and a 
+                        frameless glass shower. Additional features include hardwood flooring throughout, in-unit washer/dryer, 
+                        and a private balcony. The building offers 24/7 concierge service, fitness center, rooftop deck, and 
+                        secure underground parking.
+                    </p>
+                    
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Amenities</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                        <div class="amenity-item flex items-center">
+                            <div class="amenity-icon bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center mr-3">
+                                <i data-feather="wifi" class="text-blue-600 w-5 h-5"></i>
+                            </div>
+                            <span class="text-gray-700">High-Speed WiFi</span>
+                        </div>
+                        <div class="amenity-item flex items-center">
+                            <div class="amenity-icon bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center mr-3">
+                                <i data-feather="thermometer" class="text-blue-600 w-5 h-5"></i>
+                            </div>
+                            <span class="text-gray-700">Central AC</span>
+                        </div>
+                        <div class="amenity-item flex items-center">
+                            <div class="amenity-icon bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center mr-3">
+                                <i data-feather="tv" class="text-blue-600 w-5 h-5"></i>
+                            </div>
+                            <span class="text-gray-700">Smart TV</span>
+                        </div>
+                        <div class="amenity-item flex items-center">
+                            <div class="amenity-icon bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center mr-3">
+                                <i data-feather="home" class="text-blue-600 w-5 h-5"></i>
+                            </div>
+                            <span class="text-gray-700">Fitness Center</span>
+                        </div>
+                        <div class="amenity-item flex items-center">
+                            <div class="amenity-icon bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center mr-3">
+                                <i data-feather="shield" class="text-blue-600 w-5 h-5"></i>
+                            </div>
+                            <span class="text-gray-700">24/7 Security</span>
+                        </div>
+                        <div class="amenity-item flex items-center">
+                            <div class="amenity-icon bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center mr-3">
+                                <i data-feather="parking" class="text-blue-600 w-5 h-5"></i>
+                            </div>
+                            <span class="text-gray-700">Parking Space</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Floor Plan</h3>
+                    <div class="bg-gray-100 rounded-xl p-6 mb-8">
+                        <img src="http://static.photos/real-estate/640x360/15" alt="Floor Plan" class="w-full h-auto">
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Location</h3>
+                    <div class="bg-gray-100 rounded-xl overflow-hidden h-80 mb-8">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215495132962!2d-73.9878449241833!3d40.74844047138861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1681234567890!5m2!1sen!2sus" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+                
+                <!-- Sidebar -->
+                <div class="lg:w-1/3">
+                    <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6 sticky top-24">
+                        <h3 class="text-xl font-bold text-gray-800 mb-6">Schedule a Viewing</h3>
+                        
+                        <form>
+                            <div class="mb-4">
+                                <label for="name" class="block text-gray-700 mb-2">Full Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block text-gray-700 mb-2">Email Address</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="phone" class="block text-gray-700 mb-2">Phone Number</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="date" class="block text-gray-700 mb-2">Preferred Date</label>
+                                <input type="date" id="date" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-gray-700 mb-2">Message</label>
+                                <textarea id="message" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-medium transition duration-300">
+                                Request Viewing
+                            </button>
+                        </form>
+                        
+                        <div class="mt-8 pt-6 border-t border-gray-200">
+                            <h4 class="text-lg font-bold text-gray-800 mb-4">Contact Agent</h4>
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                                    <img src="http://static.photos/people/200x200/4" alt="Agent" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h5 class="font-bold">Michael Johnson</h5>
+                                    <p class="text-gray-600 text-sm">Senior Real Estate Agent</p>
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center text-gray-600">
+                                    <i data-feather="phone" class="w-4 h-4 mr-2"></i>
+                                    <span>+1 (555) 123-4567</span>
+                                </div>
+                                <div class="flex items-center text-gray-600">
+                                    <i data-feather="mail" class="w-4 h-4 mr-2"></i>
+                                    <span>michael@estatepro.com</span>
+                                </div>
+                                <div class="flex items-center text-gray-600">
+                                    <i data-feather="clock" class="w-4 h-4 mr-2"></i>
+                                    <span>Mon-Fri: 9am-6pm</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Similar Properties -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Similar Properties</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">You might also be interested in these properties</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Property 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md transition duration-300 hover:shadow-lg">
+                    <div class="relative">
+                        <img src="http://static.photos/real-estate/640x360/16" alt="Property" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">Urban Loft Apartment</h3>
+                            <span class="text-blue-600 font-bold">$290,000</span>
+                        </div>
+                        <p class="text-gray-600 mb-4"><i data-feather="map-pin" class="inline mr-1 w-4 h-4"></i> Brooklyn, NY</p>
+                        <div class="flex justify-between text-gray-600 mb-4">
+                            <span><i data-feather="home" class="inline mr-1 w-4 h-4"></i> Apartment</span>
+                            <span><i data-feather="maximize-2" class="inline mr-1 w-4 h-4"></i> 1100 sqft</span>
+                            <span><i data-feather="layers" class="inline mr-1 w-4 h-4"></i> 2 Beds</span>
+                        </div>
+                        <a href="property-details.html" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition duration-300">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Property 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md transition duration-300 hover:shadow-lg">
+                    <div class="relative">
+                        <img src="http://static.photos/real-estate/640x360/17" alt="Property" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">Luxury High-Rise Condo</h3>
+                            <span class="text-blue-600 font-bold">$410,000</span>
+                        </div>
+                        <p class="text-gray-600 mb-4"><i data-feather="map-pin" class="inline mr-1 w-4 h-4"></i> Manhattan, NY</p>
+                        <div class="flex justify-between text-gray-600 mb-4">
+                            <span><i data-feather="home" class="inline mr-1 w-4 h-4"></i> Condominium</span>
+                            <span><i data-feather="maximize-2" class="inline mr-1 w-4 h-4"></i> 1500 sqft</span>
+                            <span><i data-feather="layers" class="inline mr-1 w-4 h-4"></i> 2 Beds</span>
+                        </div>
+                        <a href="property-details.html" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition duration-300">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Property 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md transition duration-300 hover:shadow-lg">
+                    <div class="relative">
+                        <img src="http://static.photos/real-estate/640x360/18" alt="Property" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">Modern Studio Apartment</h3>
+                            <span class="text-blue-600 font-bold">$220,000</span>
+                        </div>
+                        <p class="text-gray-600 mb-4"><i data-feather="map-pin" class="inline mr-1 w-4 h-4"></i> Queens, NY</p>
+                        <div class="flex justify-between text-gray-600 mb-4">
+                            <span><i data-feather="home" class="inline mr-1 w-4 h-4"></i> Studio</span>
+                            <span><i data-feather="maximize-2" class="inline mr-1 w-4 h-4"></i> 700 sqft</span>
+                            <span><i data-feather="layers" class="inline mr-1 w-4 h-4"></i> 1 Bed</span>
+                        </div>
+                        <a href="property-details.html" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition duration-300">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">EstatePro</h3>
+                    <p class="text-gray-400">The modern way to find and purchase your dream property with confidence and ease.</p>
+                </div>
+</body>
+</html>
