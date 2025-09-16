@@ -30,7 +30,7 @@
 <body class="bg-gray-50">
     <!-- Navigation -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-3">
+        <div class="container mx-auto px-6 py-3 relative">
             <div class="flex justify-between items-center">
                 <a href="index.html" class="text-2xl font-bold text-blue-600">EstatePro</a>
                 <div class="hidden md:flex space-x-8">
@@ -39,9 +39,16 @@
                     <a href="about.html" class="text-gray-600 hover:text-blue-600 transition">About</a>
                     <a href="contact.html" class="text-gray-600 hover:text-blue-600 transition">Contact</a>
                 </div>
-                <button class="md:hidden">
+                <button id="mobile-menu-btn" class="md:hidden p-2">
                     <i data-feather="menu"></i>
                 </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden flex flex-col absolute top-full left-0 right-0 bg-white shadow-md border-t border-gray-200">
+                <a href="index.html" class="block px-6 py-3 text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition text-base font-medium border-b border-gray-100">Home</a>
+                <a href="listings.html" class="block px-6 py-3 text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition text-base font-medium border-b border-gray-100">Listings</a>
+                <a href="about.html" class="block px-6 py-3 text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition text-base font-medium border-b border-gray-100">About</a>
+                <a href="contact.html" class="block px-6 py-3 text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition text-base font-medium">Contact</a>
             </div>
         </div>
     </nav>
@@ -339,6 +346,57 @@
                     <h3 class="text-xl font-bold mb-4">EstatePro</h3>
                     <p class="text-gray-400">The modern way to find and purchase your dream property with confidence and ease.</p>
                 </div>
-</body>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="listings.html" class="text-gray-400 hover:text-white transition">Properties</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Connect With Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="facebook" class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="twitter" class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="instagram" class="w-6 h-6"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="linkedin" class="w-6 h-6"></i></a>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-400">info@estatepro.com</p>
+                        <p class="text-gray-400">+1 (555) 123-4567</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 EstatePro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        feather.replace();
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
 </html>
