@@ -26,7 +26,7 @@
 <body class="bg-gray-50">
     <!-- Navigation -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-3">
+        <div class="container mx-auto px-6 py-3 relative">
             <div class="flex justify-between items-center">
                 <a href="index.html" class="text-2xl font-bold text-blue-600">EstatePro</a>
                 <div class="hidden md:flex space-x-8">
@@ -35,9 +35,16 @@
                     <a href="about.html" class="text-gray-600 hover:text-blue-600 transition">About</a>
                     <a href="#" class="text-blue-600 font-medium">Contact</a>
                 </div>
-                <button class="md:hidden">
+                <button id="mobile-menu-btn" class="md:hidden p-2">
                     <i data-feather="menu"></i>
                 </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden flex flex-col absolute top-full left-0 right-0 bg-white shadow-md border-t border-gray-200">
+                <a href="index.html" class="block px-6 py-3 text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition text-base font-medium border-b border-gray-100">Home</a>
+                <a href="listings.html" class="block px-6 py-3 text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition text-base font-medium border-b border-gray-100">Listings</a>
+                <a href="about.html" class="block px-6 py-3 text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition text-base font-medium border-b border-gray-100">About</a>
+                <a href="#" class="block px-6 py-3 text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition text-base font-medium">Contact</a>
             </div>
         </div>
     </nav>
@@ -120,7 +127,7 @@
         </div>
     </section>
 
-    <!-- Map Section (Placeholder) -->
+    <!-- Map Section -->
     <section class="py-16 bg-white">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
@@ -128,18 +135,15 @@
                 <p class="text-gray-600 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Find us at the heart of the city</p>
             </div>
             <div class="bg-gray-200 h-96 rounded-xl overflow-hidden" data-aos="fade-up" data-aos-delay="200">
-                <!-- Placeholder for map - In production, embed Google Maps or similar -->
-                <div class="bg-gray-100 rounded-xl overflow-hidden h-80 mb-8">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215495132962!2d-73.9878449241833!3d40.74844047138861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1681234567890!5m2!1sen!2sus" 
-                            width="100%" 
-                            height="100%" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-                    </div>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215495132962!2d-73.9878449241833!3d40.74844047138861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1681234567890!5m2!1sen!2sus" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </div>
     </section>
@@ -208,6 +212,12 @@
             once: true
         });
         feather.replace();
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
 
         // Basic form submission handler (for demo)
         document.querySelector('form').addEventListener('submit', function(e) {
