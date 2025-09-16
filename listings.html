@@ -40,7 +40,7 @@
 <body class="bg-gray-50">
     <!-- Navigation -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-3">
+        <div class="container mx-auto px-6 py-3 relative">
             <div class="flex justify-between items-center">
                 <a href="index.html" class="text-2xl font-bold text-blue-600">EstatePro</a>
                 <div class="hidden md:flex space-x-8">
@@ -49,9 +49,16 @@
                     <a href="about.html" class="text-gray-600 hover:text-blue-600 transition">About</a>
                     <a href="contact.html" class="text-gray-600 hover:text-blue-600 transition">Contact</a>
                 </div>
-                <button class="md:hidden">
+                <button id="mobile-menu-btn" class="md:hidden p-2">
                     <i data-feather="menu"></i>
                 </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden flex flex-col absolute top-full left-0 right-0 bg-white shadow-md border-t border-gray-200">
+                <a href="index.html" class="block px-6 py-3 text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition text-base font-medium border-b border-gray-100">Home</a>
+                <a href="#" class="block px-6 py-3 text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition text-base font-medium border-b border-gray-100">Listings</a>
+                <a href="about.html" class="block px-6 py-3 text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition text-base font-medium border-b border-gray-100">About</a>
+                <a href="contact.html" class="block px-6 py-3 text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition text-base font-medium">Contact</a>
             </div>
         </div>
     </nav>
@@ -228,6 +235,12 @@
             once: true
         });
         feather.replace();
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
 
         // Property data
         const properties = [
