@@ -23,6 +23,18 @@
         .filter-section {
             transition: all 0.3s ease;
         }
+        .list-view .property-card {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .list-view .property-card img {
+            width: 40%;
+            height: auto;
+        }
+        .list-view .property-card .p-6 {
+            flex: 1;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -57,9 +69,9 @@
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center gap-4">
                 <div class="flex-1 w-full">
-                    <input type="text" placeholder="Search by location or keyword" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
+                    <input type="text" id="location-input" placeholder="Search by location or keyword" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
                 </div>
-                <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition duration-300 flex items-center">
+                <button id="search-btn" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition duration-300 flex items-center">
                     <i data-feather="search" class="mr-2"></i> Search
                 </button>
             </div>
@@ -67,45 +79,49 @@
             <div class="mt-6">
                 <div class="flex flex-wrap gap-4">
                     <div class="filter-section">
-                        <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
-                            <option>Property Type</option>
-                            <option>All Types</option>
-                            <option>Apartment</option>
-                            <option>House</option>
-                            <option>Villa</option>
-                            <option>Commercial</option>
+                        <select id="property-type" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
+                            <option value="">Property Type</option>
+                            <option value="All Types">All Types</option>
+                            <option value="Apartment">Apartment</option>
+                            <option value="House">House</option>
+                            <option value="Villa">Villa</option>
+                            <option value="Commercial">Commercial</option>
+                            <option value="Condominium">Condominium</option>
+                            <option value="Townhouse">Townhouse</option>
+                            <option value="Penthouse">Penthouse</option>
+                            <option value="Cottage">Cottage</option>
                         </select>
                     </div>
                     <div class="filter-section">
-                        <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
-                            <option>Price Range</option>
-                            <option>Any Price</option>
-                            <option>$0 - $100,000</option>
-                            <option>$100,000 - $300,000</option>
-                            <option>$300,000 - $500,000</option>
-                            <option>$500,000+</option>
+                        <select id="price-range" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
+                            <option value="">Price Range</option>
+                            <option value="Any Price">Any Price</option>
+                            <option value="0-100000">$0 - $100,000</option>
+                            <option value="100000-300000">$100,000 - $300,000</option>
+                            <option value="300000-500000">$300,000 - $500,000</option>
+                            <option value="500000+">$500,000+</option>
                         </select>
                     </div>
                     <div class="filter-section">
-                        <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
-                            <option>Bedrooms</option>
-                            <option>Any</option>
-                            <option>1+</option>
-                            <option>2+</option>
-                            <option>3+</option>
-                            <option>4+</option>
+                        <select id="bedrooms" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
+                            <option value="">Bedrooms</option>
+                            <option value="Any">Any</option>
+                            <option value="1">1+</option>
+                            <option value="2">2+</option>
+                            <option value="3">3+</option>
+                            <option value="4">4+</option>
                         </select>
                     </div>
                     <div class="filter-section">
-                        <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
-                            <option>Sort By</option>
-                            <option>Newest</option>
-                            <option>Price: Low to High</option>
-                            <option>Price: High to Low</option>
-                            <option>Most Popular</option>
+                        <select id="sort-by" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
+                            <option value="">Sort By</option>
+                            <option value="Newest">Newest</option>
+                            <option value="PriceLowHigh">Price: Low to High</option>
+                            <option value="PriceHighLow">Price: High to Low</option>
+                            <option value="Popular">Most Popular</option>
                         </select>
                     </div>
-                    <button class="ml-auto text-blue-600 hover:text-blue-800 flex items-center">
+                    <button id="more-filters" class="ml-auto text-blue-600 hover:text-blue-800 flex items-center">
                         <i data-feather="filter" class="mr-2"></i> More Filters
                     </button>
                 </div>
@@ -117,155 +133,30 @@
     <section class="py-12 bg-gray-50">
         <div class="container mx-auto px-6">
             <div class="flex justify-between items-center mb-8">
-                <h2 class="text-2xl font-bold text-gray-800">Showing 24 Properties</h2>
+                <h2 id="results-count" class="text-2xl font-bold text-gray-800">Showing 6 Properties</h2>
                 <div class="flex items-center">
                     <span class="mr-2 text-gray-600">View:</span>
-                    <button class="p-2 rounded-lg bg-blue-100 text-blue-600 mr-2">
+                    <button id="grid-view" class="p-2 rounded-lg bg-blue-100 text-blue-600 mr-2">
                         <i data-feather="grid"></i>
                     </button>
-                    <button class="p-2 rounded-lg hover:bg-gray-200 text-gray-600">
+                    <button id="list-view" class="p-2 rounded-lg hover:bg-gray-200 text-gray-600">
                         <i data-feather="list"></i>
                     </button>
                 </div>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Property 1 -->
-                <div class="property-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300" data-aos="fade-up">
-                    <div class="relative">
-                        <img src="https://cdn.chime.me/image/fs/sitebuild/2024424/1/w600_original_4eb40b89-fff6-45be-90da-d2879b100bd1-jpg.webp" alt="Property" class="w-full h-48 object-cover">
-                        <div class="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">New</div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-800">Downtown Loft Apartment</h3>
-                            <span class="text-blue-600 font-bold">$275,000</span>
-                        </div>
-                        <p class="text-gray-600 mb-4"><i data-feather="map-pin" class="inline mr-1 w-4 h-4"></i> Chicago, IL</p>
-                        <div class="flex justify-between text-gray-600 mb-4">
-                            <span><i data-feather="home" class="inline mr-1 w-4 h-4"></i> Apartment</span>
-                            <span><i data-feather="maximize-2" class="inline mr-1 w-4 h-4"></i> 950 sqft</span>
-                            <span><i data-feather="layers" class="inline mr-1 w-4 h-4"></i> 1 Bed</span>
-                        </div>
-                        <a href="property-details.html" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition duration-300">View Details</a>
-                    </div>
-                </div>
-
-                <!-- Property 2 -->
-                <div class="property-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="100">
-                    <div class="relative">
-                        <img src="https://cdn.chime.me/image/fs/sitebuild/2024424/1/w600_original_4eb40b89-fff6-45be-90da-d2879b100bd1-jpg.webp" alt="Property" class="w-full h-48 object-cover">
-                        <div class="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">Reduced</div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-800">Suburban Family Home</h3>
-                            <span class="text-blue-600 font-bold">$385,000</span>
-                        </div>
-                        <p class="text-gray-600 mb-4"><i data-feather="map-pin" class="inline mr-1 w-4 h-4"></i> Austin, TX</p>
-                        <div class="flex justify-between text-gray-600 mb-4">
-                            <span><i data-feather="home" class="inline mr-1 w-4 h-4"></i> House</span>
-                            <span><i data-feather="maximize-2" class="inline mr-1 w-4 h-4"></i> 2100 sqft</span>
-                            <span><i data-feather="layers" class="inline mr-1 w-4 h-4"></i> 3 Beds</span>
-                        </div>
-                        <a href="property-details.html" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition duration-300">View Details</a>
-                    </div>
-                </div>
-
-                <!-- Property 3 -->
-                <div class="property-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="200">
-                    <div class="relative">
-                        <img src="https://cdn.chime.me/image/fs/sitebuild/2024424/1/w600_original_4eb40b89-fff6-45be-90da-d2879b100bd1-jpg.webp" alt="Property" class="w-full h-48 object-cover">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-800">Waterfront Condo</h3>
-                            <span class="text-blue-600 font-bold">$620,000</span>
-                        </div>
-                        <p class="text-gray-600 mb-4"><i data-feather="map-pin" class="inline mr-1 w-4 h-4"></i> Miami, FL</p>
-                        <div class="flex justify-between text-gray-600 mb-4">
-                            <span><i data-feather="home" class="inline mr-1 w-4 h-4"></i> Condominium</span>
-                            <span><i data-feather="maximize-2" class="inline mr-1 w-4 h-4"></i> 1800 sqft</span>
-                            <span><i data-feather="layers" class="inline mr-1 w-4 h-4"></i> 2 Beds</span>
-                        </div>
-                        <a href="property-details.html" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition duration-300">View Details</a>
-                    </div>
-                </div>
-
-                <!-- Property 4 -->
-                <div class="property-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300" data-aos="fade-up">
-                    <div class="relative">
-                        <img src="https://static.vecteezy.com/system/resources/thumbnails/022/903/395/small_2x/ai-generative-3d-modern-luxury-real-estate-house-for-sale-and-rent-luxury-property-concept-ai-generated-artwork-photo.jpg" alt="Property" class="w-full h-48 object-cover">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-800">Modern Townhouse</h3>
-                            <span class="text-blue-600 font-bold">$410,000</span>
-                        </div>
-                        <p class="text-gray-600 mb-4"><i data-feather="map-pin" class="inline mr-1 w-4 h-4"></i> Denver, CO</p>
-                        <div class="flex justify-between text-gray-600 mb-4">
-                            <span><i data-feather="home" class="inline mr-1 w-4 h-4"></i> Townhouse</span>
-                            <span><i data-feather="maximize-2" class="inline mr-1 w-4 h-4"></i> 1600 sqft</span>
-                            <span><i data-feather="layers" class="inline mr-1 w-4 h-4"></i> 3 Beds</span>
-                        </div>
-                        <a href="property-details.html" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition duration-300">View Details</a>
-                    </div>
-                </div>
-
-                <!-- Property 5 -->
-                <div class="property-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="100">
-                    <div class="relative">
-                        <img src="https://static.vecteezy.com/system/resources/thumbnails/022/903/395/small_2x/ai-generative-3d-modern-luxury-real-estate-house-for-sale-and-rent-luxury-property-concept-ai-generated-artwork-photo.jpg" alt="Property" class="w-full h-48 object-cover">
-                        <div class="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">Featured</div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-800">Luxury Penthouse</h3>
-                            <span class="text-blue-600 font-bold">$1,250,000</span>
-                        </div>
-                        <p class="text-gray-600 mb-4"><i data-feather="map-pin" class="inline mr-1 w-4 h-4"></i> New York, NY</p>
-                        <div class="flex justify-between text-gray-600 mb-4">
-                            <span><i data-feather="home" class="inline mr-1 w-4 h-4"></i> Penthouse</span>
-                            <span><i data-feather="maximize-2" class="inline mr-1 w-4 h-4"></i> 3200 sqft</span>
-                            <span><i data-feather="layers" class="inline mr-1 w-4 h-4"></i> 4 Beds</span>
-                        </div>
-                        <a href="property-details.html" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition duration-300">View Details</a>
-                    </div>
-                </div>
-
-                <!-- Property 6 -->
-                <div class="property-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300" data-aos="fade-up" data-aos-delay="200">
-                    <div class="relative">
-                        <img src="https://static.vecteezy.com/system/resources/thumbnails/022/903/395/small_2x/ai-generative-3d-modern-luxury-real-estate-house-for-sale-and-rent-luxury-property-concept-ai-generated-artwork-photo.jpg" alt="Property" class="w-full h-48 object-cover">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-gray-800">Cozy Cottage</h3>
-                            <span class="text-blue-600 font-bold">$195,000</span>
-                        </div>
-                        <p class="text-gray-600 mb-4"><i data-feather="map-pin" class="inline mr-1 w-4 h-4"></i> Portland, OR</p>
-                        <div class="flex justify-between text-gray-600 mb-4">
-                            <span><i data-feather="home" class="inline mr-1 w-4 h-4"></i> Cottage</span>
-                            <span><i data-feather="maximize-2" class="inline mr-1 w-4 h-4"></i> 850 sqft</span>
-                            <span><i data-feather="layers" class="inline mr-1 w-4 h-4"></i> 2 Beds</span>
-                        </div>
-                        <a href="property-details.html" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition duration-300">View Details</a>
-                    </div>
-                </div>
+            <div id="property-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Properties will be dynamically populated -->
             </div>
 
             <!-- Pagination -->
             <div class="mt-12 flex justify-center">
                 <nav class="flex items-center space-x-2">
-                    <button class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-blue-600 hover:text-white transition">
+                    <button id="prev-page" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-blue-600 hover:text-white transition">
                         <i data-feather="chevron-left"></i>
                     </button>
-                    <button class="px-4 py-2 bg-blue-600 text-white rounded-lg">1</button>
-                    <button class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-blue-600 hover:text-white transition">2</button>
-                    <button class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-blue-600 hover:text-white transition">3</button>
-                    <span class="px-4 py-2 text-gray-600">...</span>
-                    <button class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-blue-600 hover:text-white transition">8</button>
-                    <button class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-blue-600 hover:text-white transition">
+                    <div id="pagination-buttons"></div>
+                    <button id="next-page" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-blue-600 hover:text-white transition">
                         <i data-feather="chevron-right"></i>
                     </button>
                 </nav>
@@ -337,7 +228,284 @@
             once: true
         });
         feather.replace();
+
+        // Property data
+        const properties = [
+            {
+                id: 1,
+                title: "Downtown Loft Apartment",
+                price: 275000,
+                location: "Chicago, IL",
+                type: "Apartment",
+                sqft: 950,
+                beds: 1,
+                image: "https://cdn.chime.me/image/fs/sitebuild/2024424/1/w600_original_4eb40b89-fff6-45be-90da-d2879b100bd1-jpg.webp",
+                status: "New",
+                dateAdded: "2025-09-10",
+                popularity: 80
+            },
+            {
+                id: 2,
+                title: "Suburban Family Home",
+                price: 385000,
+                location: "Austin, TX",
+                type: "House",
+                sqft: 2100,
+                beds: 3,
+                image: "https://cdn.chime.me/image/fs/sitebuild/2024424/1/w600_original_4eb40b89-fff6-45be-90da-d2879b100bd1-jpg.webp",
+                status: "Reduced",
+                dateAdded: "2025-08-15",
+                popularity: 60
+            },
+            {
+                id: 3,
+                title: "Waterfront Condo",
+                price: 620000,
+                location: "Miami, FL",
+                type: "Condominium",
+                sqft: 1800,
+                beds: 2,
+                image: "https://cdn.chime.me/image/fs/sitebuild/2024424/1/w600_original_4eb40b89-fff6-45be-90da-d2879b100bd1-jpg.webp",
+                status: "",
+                dateAdded: "2025-07-20",
+                popularity: 90
+            },
+            {
+                id: 4,
+                title: "Modern Townhouse",
+                price: 410000,
+                location: "Denver, CO",
+                type: "Townhouse",
+                sqft: 1600,
+                beds: 3,
+                image: "https://static.vecteezy.com/system/resources/thumbnails/022/903/395/small_2x/ai-generative-3d-modern-luxury-real-estate-house-for-sale-and-rent-luxury-property-concept-ai-generated-artwork-photo.jpg",
+                status: "",
+                dateAdded: "2025-09-01",
+                popularity: 70
+            },
+            {
+                id: 5,
+                title: "Luxury Penthouse",
+                price: 1250000,
+                location: "New York, NY",
+                type: "Penthouse",
+                sqft: 3200,
+                beds: 4,
+                image: "https://static.vecteezy.com/system/resources/thumbnails/022/903/395/small_2x/ai-generative-3d-modern-luxury-real-estate-house-for-sale-and-rent-luxury-property-concept-ai-generated-artwork-photo.jpg",
+                status: "Featured",
+                dateAdded: "2025-09-05",
+                popularity: 95
+            },
+            {
+                id: 6,
+                title: "Cozy Cottage",
+                price: 195000,
+                location: "Portland, OR",
+                type: "Cottage",
+                sqft: 850,
+                beds: 2,
+                image: "https://static.vecteezy.com/system/resources/thumbnails/022/903/395/small_2x/ai-generative-3d-modern-luxury-real-estate-house-for-sale-and-rent-luxury-property-concept-ai-generated-artwork-photo.jpg",
+                status: "",
+                dateAdded: "2025-08-25",
+                popularity: 65
+            }
+        ];
+
+        // Pagination settings
+        const propertiesPerPage = 6;
+        let currentPage = 1;
+        let viewMode = 'grid';
+
+        // Function to render properties
+        function renderProperties(filteredProperties, page) {
+            const propertyGrid = document.getElementById('property-grid');
+            propertyGrid.className = `grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ${viewMode === 'list' ? 'list-view' : ''}`;
+            propertyGrid.innerHTML = '';
+
+            const start = (page - 1) * propertiesPerPage;
+            const end = start + propertiesPerPage;
+            const paginatedProperties = filteredProperties.slice(start, end);
+
+            paginatedProperties.forEach((property, index) => {
+                const propertyCard = document.createElement('div');
+                propertyCard.className = 'property-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300';
+                propertyCard.setAttribute('data-aos', 'fade-up');
+                propertyCard.setAttribute('data-aos-delay', index * 100);
+                propertyCard.innerHTML = `
+                    <div class="relative">
+                        <img src="${property.image}" alt="Property" class="w-full h-48 object-cover">
+                        ${property.status ? `<div class="absolute top-4 right-4 bg-${property.status === 'Reduced' ? 'green' : 'blue'}-600 text-white px-3 py-1 rounded-full text-sm font-medium">${property.status}</div>` : ''}
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">${property.title}</h3>
+                            <span class="text-blue-600 font-bold">$${property.price.toLocaleString()}</span>
+                        </div>
+                        <p class="text-gray-600 mb-4"><i data-feather="map-pin" class="inline mr-1 w-4 h-4"></i> ${property.location}</p>
+                        <div class="flex justify-between text-gray-600 mb-4">
+                            <span><i data-feather="home" class="inline mr-1 w-4 h-4"></i> ${property.type}</span>
+                            <span><i data-feather="maximize-2" class="inline mr-1 w-4 h-4"></i> ${property.sqft} sqft</span>
+                            <span><i data-feather="layers" class="inline mr-1 w-4 h-4"></i> ${property.beds} Beds</span>
+                        </div>
+                        <a href="property-details.html?id=${property.id}" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition duration-300">View Details</a>
+                    </div>
+                `;
+                propertyGrid.appendChild(propertyCard);
+            });
+
+            // Update results count
+            document.getElementById('results-count').textContent = `Showing ${filteredProperties.length} Properties`;
+
+            // Update pagination
+            updatePagination(filteredProperties.length, page);
+            feather.replace();
+        }
+
+        // Function to update pagination
+        function updatePagination(totalProperties, page) {
+            const totalPages = Math.ceil(totalProperties / propertiesPerPage);
+            const paginationButtons = document.getElementById('pagination-buttons');
+            paginationButtons.innerHTML = '';
+
+            for (let i = 1; i <= totalPages; i++) {
+                const button = document.createElement('button');
+                button.className = `px-4 py-2 border border-gray-300 rounded-lg ${i === page ? 'bg-blue-600 text-white' : 'text-gray-600 hover:bg-blue-600 hover:text-white'} transition`;
+                button.textContent = i;
+                button.addEventListener('click', () => {
+                    currentPage = i;
+                    applyFilters();
+                });
+                paginationButtons.appendChild(button);
+            }
+
+            document.getElementById('prev-page').disabled = page === 1;
+            document.getElementById('next-page').disabled = page === totalPages;
+        }
+
+        // Function to apply filters and sort
+        function applyFilters() {
+            const location = document.getElementById('location-input').value.toLowerCase();
+            const propertyType = document.getElementById('property-type').value;
+            const priceRange = document.getElementById('price-range').value;
+            const bedrooms = document.getElementById('bedrooms').value;
+            const sortBy = document.getElementById('sort-by').value;
+
+            let filteredProperties = [...properties];
+
+            // Filter by location
+            if (location) {
+                filteredProperties = filteredProperties.filter(property => 
+                    property.location.toLowerCase().includes(location) || 
+                    property.title.toLowerCase().includes(location)
+                );
+            }
+
+            // Filter by property type
+            if (propertyType && propertyType !== 'All Types') {
+                filteredProperties = filteredProperties.filter(property => 
+                    property.type === propertyType
+                );
+            }
+
+            // Filter by price range
+            if (priceRange && priceRange !== 'Any Price') {
+                const [min, max] = priceRange.split('-').map(val => parseInt(val) || Infinity);
+                filteredProperties = filteredProperties.filter(property => 
+                    property.price >= min && (max === Infinity || property.price <= max)
+                );
+            }
+
+            // Filter by bedrooms
+            if (bedrooms && bedrooms !== 'Any') {
+                filteredProperties = filteredProperties.filter(property => 
+                    property.beds >= parseInt(bedrooms)
+                );
+            }
+
+            // Sort properties
+            switch (sortBy) {
+                case 'Newest':
+                    filteredProperties.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+                    break;
+                case 'PriceLowHigh':
+                    filteredProperties.sort((a, b) => a.price - b.price);
+                    break;
+                case 'PriceHighLow':
+                    filteredProperties.sort((a, b) => b.price - a.price);
+                    break;
+                case 'Popular':
+                    filteredProperties.sort((a, b) => b.popularity - a.popularity);
+                    break;
+            }
+
+            renderProperties(filteredProperties, currentPage);
+        }
+
+        // Event listeners for filters and search
+        document.getElementById('search-btn').addEventListener('click', () => {
+            currentPage = 1;
+            applyFilters();
+        });
+
+        document.getElementById('property-type').addEventListener('change', () => {
+            currentPage = 1;
+            applyFilters();
+        });
+
+        document.getElementById('price-range').addEventListener('change', () => {
+            currentPage = 1;
+            applyFilters();
+        });
+
+        document.getElementById('bedrooms').addEventListener('change', () => {
+            currentPage = 1;
+            applyFilters();
+        });
+
+        document.getElementById('sort-by').addEventListener('change', () => {
+            currentPage = 1;
+            applyFilters();
+        });
+
+        document.getElementById('prev-page').addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                applyFilters();
+            }
+        });
+
+        document.getElementById('next-page').addEventListener('click', () => {
+            const totalPages = Math.ceil(properties.length / propertiesPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                applyFilters();
+            }
+        });
+
+        // View toggle
+        document.getElementById('grid-view').addEventListener('click', () => {
+            viewMode = 'grid';
+            document.getElementById('grid-view').classList.add('bg-blue-100', 'text-blue-600');
+            document.getElementById('list-view').classList.remove('bg-blue-100', 'text-blue-600');
+            document.getElementById('list-view').classList.add('hover:bg-gray-200', 'text-gray-600');
+            applyFilters();
+        });
+
+        document.getElementById('list-view').addEventListener('click', () => {
+            viewMode = 'list';
+            document.getElementById('list-view').classList.add('bg-blue-100', 'text-blue-600');
+            document.getElementById('grid-view').classList.remove('bg-blue-100', 'text-blue-600');
+            document.getElementById('grid-view').classList.add('hover:bg-gray-200', 'text-gray-600');
+            applyFilters();
+        });
+
+        // Initial render
+        applyFilters();
+
+        // Placeholder for "More Filters" button
+        document.getElementById('more-filters').addEventListener('click', () => {
+            alert('More filters functionality can be implemented with additional criteria like square footage, amenities, etc.');
+        });
     </script>
 </body>
 </html>
-
